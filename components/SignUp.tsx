@@ -10,30 +10,36 @@ export function LoginForm() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+  const [errror, setError] = React.useState("");
 
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    const response = await fetch("https://finx.ginnsltd.com/finx/login/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        staff_id: staffId,
-        email: email,
-        password: password,
-      }),
-    });
+    try {
+      const response = await fetch("https://finx.ginnsltd.com/finx/login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          staff_id: staffId,
+          email: email,
+          password: password,
+        }),
+      });
 
-    setLoading(false);
+      setLoading(false);
 
-    if (response.ok) {
-      router.push("/dashboard");
-    } else {
-      console.log("Form submission failed");
+      if (response.ok) {
+        router.push("/dashboard");
+      } else {
+        console.log("Form submission failed");
+      }
+    } catch (error) {
+      console.log("An error occurred:", error);
+      setError("Login failed, please try again");
     }
   };
   return (
@@ -111,6 +117,9 @@ export function LoginForm() {
           )}
           <BottomGradient />
         </button>
+        {errror && (
+          <p className="text-red-500 text-sm mt-2 text-center">{errror}</p>
+        )}
       </form>
     </div>
   );
