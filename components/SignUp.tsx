@@ -10,7 +10,7 @@ export function LoginForm() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [loading, setLoading] = React.useState(false);
-  const [errror, setError] = React.useState("");
+  const [error, setError] = React.useState("");
 
   const router = useRouter();
 
@@ -117,8 +117,8 @@ export function LoginForm() {
           )}
           <BottomGradient />
         </button>
-        {errror && (
-          <p className="text-red-500 text-sm mt-2 text-center">{errror}</p>
+        {error && (
+          <p className="text-red-500 text-sm mt-2 text-center">{error}</p>
         )}
       </form>
     </div>
