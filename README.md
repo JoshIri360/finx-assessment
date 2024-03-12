@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Basic Login Page
 
-## Getting Started
+This repository contains a Next.js application developed as a job assessment test. The application serves as a basic login page where users can authenticate themselves. However, there's an issue encountered when hosting the application - it faces Cross-Origin Resource Sharing (CORS) errors while consuming the login API.
 
-First, run the development server:
+## Problem Description
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The CORS error arises when attempting to access resources (in this case, an API) from a different origin (domain, protocol, or port) than the one the frontend is served from. While the API works flawlessly when tested locally, it fails when hosted due to CORS restrictions imposed by the browser. It's crucial to note that this issue isn't caused by any misconfiguration on your end; rather, it's a security measure implemented by browsers to prevent unauthorized access to resources.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Solution Approach
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Since the CORS error is not originating from your application, but rather from the API's server configuration, resolving it might require intervention at the server level where the API is hosted. Some potential solutions include:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. **API Server Configuration**: The most straightforward solution is to configure the API server to allow requests from the domain where your Next.js application is hosted. This typically involves setting appropriate CORS headers on the server to permit cross-origin requests.
 
-## Learn More
+2. **Proxy Server**: You can set up a proxy server to forward requests from your Next.js application to the API server. This proxy server would act as an intermediary, making requests on behalf of your application. By doing so, you can bypass CORS restrictions enforced by the browser.
 
-To learn more about Next.js, take a look at the following resources:
+3. **Backend Middleware**: If you have control over the backend code of the API, you can implement middleware to handle CORS headers. This middleware can be configured to allow requests from specific origins, including the one where your Next.js application is hosted.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Third-party Services**: Consider utilizing third-party services like CORS proxies or API gateways, which can help circumvent CORS issues by acting as intermediaries between your frontend and the API.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Instructions for Local Development
 
-## Deploy on Vercel
+1. Clone this repository to your local machine.
+2. Navigate to the project directory.
+3. Install dependencies by running:
+   ```
+   npm install
+   ```
+4. Start the development server with the following command:
+   ```
+   npm run dev
+   ```
+   The application will be accessible at `http://localhost:3000`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Known Issues
+- CORS error encountered when attempting to consume the login API from the hosted application.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Future Steps
+- Communicate with the API provider to address the CORS configuration.
+- Implement alternative solutions like proxying requests or utilizing third-party services if server-side configuration is not feasible.
+
+## Contributing
+Contributions to this repository are welcome. Please feel free to open an issue or submit a pull request with any improvements or fixes.
+
+## License
+This project is licensed under the [MIT License](LICENSE).
