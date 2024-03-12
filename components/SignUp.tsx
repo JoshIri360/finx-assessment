@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/utils/cn";
 import { useRouter } from "next/navigation";
 
-export function SignupForm() {
+export function LoginForm() {
   const [staffId, setStaffId] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -42,7 +42,7 @@ export function SignupForm() {
         Welcome to Finx
       </h2>
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-        Login to Finx, it&apos;s an job assessment page but you can sign up to
+        Login to Finx, it&apos;s an job assessment page but you can log in to
         see the magic.
       </p>
 
@@ -106,7 +106,7 @@ export function SignupForm() {
             </span>
           ) : (
             <span className="group-hover/btn:opacity-0 transition duration-500 opacity-100">
-              Sign up &rarr;
+              Login &rarr;
             </span>
           )}
           <BottomGradient />
