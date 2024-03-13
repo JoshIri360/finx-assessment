@@ -2,6 +2,10 @@
 
 This repository contains a Next.js application developed as a job assessment test. The application serves as a basic login page where users can authenticate themselves. However, there's an issue encountered when hosting the application - it faces Cross-Origin Resource Sharing (CORS) errors while consuming the login API.
 
+
+https://github.com/JoshIri360/finx-assessment/assets/91752742/01ae64ec-8ccc-4a8d-b850-8611a246227d
+
+
 ## Problem Description
 
 The CORS error arises when attempting to access resources (in this case, an API) from a different origin (domain, protocol, or port) than the one the frontend is served from. While the API works flawlessly when tested locally, it fails when hosted due to CORS restrictions imposed by the browser. It's crucial to note that this issue isn't caused by any misconfiguration on your end; rather, it's a security measure implemented by browsers to prevent unauthorized access to resources.
