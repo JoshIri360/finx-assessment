@@ -30,8 +30,6 @@ export function LoginForm() {
         }),
       });
 
-      setLoading(false);
-
       if (response.ok) {
         router.push("/dashboard");
       } else {
@@ -40,6 +38,11 @@ export function LoginForm() {
     } catch (error) {
       console.log("An error occurred:", error);
       setError("Login failed, please try again");
+    } finally {
+      setLoading(false);
+      setStaffId("");
+      setEmail("");
+      setPassword("");
     }
   };
   return (
